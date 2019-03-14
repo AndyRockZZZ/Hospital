@@ -9,7 +9,7 @@ namespace Hospital.Models
     {
         public int DrugId { get; set; }
         public string DrugName { get; set; }
-        public string Dosage { get; set; }
+        public float Dosage { get; set; }
 
     }
 }

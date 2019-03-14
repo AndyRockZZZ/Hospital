@@ -1,0 +1,13 @@
+﻿@model Hospital.Models.Patient
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.PatientName</h2>
+<ul>
+    <li>@Model.Address1</li>
+    <li>@Model.Address2</li>
+    <li>@Model.PostCode</li>
+</ul>
+

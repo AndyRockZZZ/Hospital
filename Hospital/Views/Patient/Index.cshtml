@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Hospital.Models.Patient>
+@{
+    ViewBag.Title = "Patient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Patients</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>  </th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address 1</th>
+            <th>Address 2</th>
+            <th>PostCode</th>
+            <th>Sex</th>
+            <th>Date of Birth</th>
+            <th>Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>Edit</td>
+                <td>@patient.PatientId</td>
+                <td>@Html.ActionLink(patient.PatientName, "Details", "Patient", new { id = patient.PatientId }, null)</td>
+                <td>@patient.Address1</td>
+                <td>@patient.Address2</td>
+                <td>@patient.PostCode</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+

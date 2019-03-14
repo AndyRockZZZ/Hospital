@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Hospital.Models.Ward>
+@{
+    ViewBag.Title = "Ward";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Wards</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>  </th>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ward in Model)
+        {
+            <tr>
+                <td>Edit</td>
+                <td>@ward.WardId</td>
+                <td>@ward.WardName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
