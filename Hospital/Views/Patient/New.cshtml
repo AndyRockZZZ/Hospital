@@ -1,0 +1,41 @@
+﻿@model Hospital.ViewModels.PatientFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Patient</h2>
+
+@using (Html.BeginForm("Save", "Patient"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Patient.PatientName)
+        @Html.TextBoxFor(m => m.Patient.PatientName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Patient.Address1)
+        @Html.TextBoxFor(m => m.Patient.Address1, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Patient.Address2)
+        @Html.TextBoxFor(m => m.Patient.Address2, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Patient.PostCode)
+        @Html.TextBoxFor(m => m.Patient.PostCode, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Patient.SexId)
+        @Html.DropDownListFor(m => m.Patient.SexId, new SelectList(Model.Sexes, "Id", "Name"), "What's your Gender?", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Patient.DOB)
+        @Html.TextBoxFor(m => m.Patient.DOB, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Patient.StatusId)
+        @Html.DropDownListFor(m => m.Patient.StatusId, new SelectList(Model.Statuses, "Id", "Name"), "What's your Status?", new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m => m.Patient.PatientId)
+    <button type="submit" class="btn btn-primary">Save</button>
+}

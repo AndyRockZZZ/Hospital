@@ -6,6 +6,10 @@
 
 <h2>List of Patients</h2>
 
+<p>
+    @Html.ActionLink("New Patient", "New", "Patient", null, new { @class = "btn btn-primary" })
+</p>
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -25,12 +29,15 @@
         @foreach (var patient in Model)
         {
             <tr>
-                <td>Edit</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Patient", new { id = patient.PatientId }, null)</td>
                 <td>@patient.PatientId</td>
                 <td>@Html.ActionLink(patient.PatientName, "Details", "Patient", new { id = patient.PatientId }, null)</td>
                 <td>@patient.Address1</td>
                 <td>@patient.Address2</td>
                 <td>@patient.PostCode</td>
+                <td>@patient.Sex.Name</td>
+                <td>@patient.DOB</td>
+                <td>@patient.Status.Name</td>
 
             </tr>
         }

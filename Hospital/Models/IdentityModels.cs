@@ -20,6 +20,10 @@ namespace Hospital.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Sex> Sexes { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
