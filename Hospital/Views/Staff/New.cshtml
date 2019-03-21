@@ -1,0 +1,23 @@
+﻿@model Hospital.ViewModels.StaffFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Staff</h2>
+
+@using (Html.BeginForm("Create", "Staff"))
+{
+    <div class="form-group">
+        @Html.LabelFor(s => s.Staff.StaffName)
+        @Html.TextBoxFor(s => s.Staff.StaffName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Staff.StaffGradeId)
+        @Html.DropDownListFor(s => s.Staff.StaffGradeId, new SelectList(Model.Grades, "Id", "Name"), 
+       "Select your Grade", new { @class = "form-control"})
+    </div>
+    @Html.HiddenFor(s => s.Staff.StaffId)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

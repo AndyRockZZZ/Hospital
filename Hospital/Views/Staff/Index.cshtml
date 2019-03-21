@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Hospital.Models.Staff>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Staff Members</h2>
+
+<p>
+    @Html.ActionLink("New Staff", "New", "Staff", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>  </th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var staff in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink("Edit", "Edit", "Staff", new { id = staff.StaffId }, null)</td>
+                <td>@staff.StaffId</td>
+                <td>@Html.ActionLink(staff.StaffName, "Details", "Staff", new { id = staff.StaffId }, null)</td>
+                <td>@staff.PhoneNumber</td>
+                <td>@staff.StaffGrade.Name</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
