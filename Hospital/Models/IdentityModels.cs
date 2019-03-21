@@ -29,6 +29,9 @@ namespace Hospital.Models
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<StaffGrade> StaffGrades { get; set; }
 
+        public DbSet<Ward> Wards { get; set; }
+        public DbSet<Bed> Beds { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

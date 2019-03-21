@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Hospital.Models.Bed>
+@{
+    ViewBag.Title = "Ward";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Beds</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th> </th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Is Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bed in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink("Edit", "Edit", "Bed", new { id = bed.WardId }, null)</td>
+                <td>@bed.BedId</td>
+                <td>@Html.ActionLink(bed.Ward.WardName, "Details", "Bed", new { id = bed.WardId }, null)</td>
+                <td>@bed.IsAvailable</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
