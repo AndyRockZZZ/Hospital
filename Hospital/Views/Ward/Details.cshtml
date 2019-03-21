@@ -1,8 +1,29 @@
-﻿@model Hospital.Models.Ward
+﻿@model IEnumerable<Hospital.Models.Bed>
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.WardName</h2>
+<h2>Beds in this Ward</h2>
 
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Is Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bed in Model)
+        {
+            <tr>
+                <td>@bed.BedId</td>
+                <td>@bed.Ward.WardName</td>
+                <td>@bed.IsAvailable</td>
+            </tr>
+            
+
+        }
+    </tbody>
+</table>

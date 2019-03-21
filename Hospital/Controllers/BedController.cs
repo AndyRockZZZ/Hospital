@@ -31,18 +31,6 @@ namespace Hospital.Controllers
             return View(beds);
         }
 
-        public ActionResult Details(int id)
-        {
-            var bed = _context.Beds.Include(b => b.Ward).SingleOrDefault(b => b.BedId == id);
-
-            if (bed == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(bed);
-        }
-
         public ActionResult New()
         {
             var ward = _context.Wards.ToList();

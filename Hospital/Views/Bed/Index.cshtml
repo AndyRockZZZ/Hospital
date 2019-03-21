@@ -21,7 +21,7 @@
             <tr>
                 <td>@Html.ActionLink("Edit", "Edit", "Bed", new { id = bed.WardId }, null)</td>
                 <td>@bed.BedId</td>
-                <td>@Html.ActionLink(bed.Ward.WardName, "Details", "Bed", new { id = bed.WardId }, null)</td>
+                <td>@bed.Ward.WardName</td>
                 <td>@bed.IsAvailable</td>
             </tr>
         }

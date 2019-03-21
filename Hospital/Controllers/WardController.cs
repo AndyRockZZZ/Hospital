@@ -33,7 +33,7 @@ namespace Hospital.Controllers
 
         public ActionResult Details(int id)
         {
-            var ward = _context.Wards.SingleOrDefault(w => w.WardId == id);
+            var ward = _context.Beds.Include(w => w.Ward).ToList().Where(w => w.WardId == id);
 
             if (ward == null)
             {
