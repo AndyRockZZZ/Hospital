@@ -174,10 +174,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DrugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\Patient_OccupancyController.cs" />
     <Compile Include="Controllers\WardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +202,18 @@
     <Compile Include="Migrations\201903201700587_AddAnnotationsToPatientModel.Designer.cs">
       <DependentUpon>201903201700587_AddAnnotationsToPatientModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903202145062_AddADrugTable.cs" />
+    <Compile Include="Migrations\201903202145062_AddADrugTable.Designer.cs">
+      <DependentUpon>201903202145062_AddADrugTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903202207555_PopulateDrugs.cs" />
+    <Compile Include="Migrations\201903202207555_PopulateDrugs.Designer.cs">
+      <DependentUpon>201903202207555_PopulateDrugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903202314231_AddAnnotationInDrug.cs" />
+    <Compile Include="Migrations\201903202314231_AddAnnotationInDrug.Designer.cs">
+      <DependentUpon>201903202314231_AddAnnotationInDrug.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bed.cs" />
@@ -218,6 +230,7 @@
     <Compile Include="Models\Ward.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DrugFormViewModel.cs" />
     <Compile Include="ViewModels\PatientFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -280,10 +293,11 @@
     <Content Include="Views\Patient\Details.cshtml" />
     <Content Include="Views\Ward\Index.cshtml" />
     <Content Include="Views\Patient\New.cshtml" />
+    <Content Include="Views\Drug\Index.cshtml" />
+    <Content Include="Views\Drug\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Patient_Occupancy\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -313,6 +327,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903201700587_AddAnnotationsToPatientModel.resx">
       <DependentUpon>201903201700587_AddAnnotationsToPatientModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903202145062_AddADrugTable.resx">
+      <DependentUpon>201903202145062_AddADrugTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903202207555_PopulateDrugs.resx">
+      <DependentUpon>201903202207555_PopulateDrugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903202314231_AddAnnotationInDrug.resx">
+      <DependentUpon>201903202314231_AddAnnotationInDrug.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

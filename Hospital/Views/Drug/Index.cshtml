@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Hospital.Models.Drug>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Drugs</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>  </th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dosage</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Drug in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink("Edit", "Edit", "Drug", new { id = Drug.DrugId }, null)</td>
+                <td>@Drug.DrugId</td>
+                <td>@Drug.DrugName</td>
+                <td>@Drug.Dosage mg</td>
+            </tr>
+        }
+    </tbody>
+</table>
