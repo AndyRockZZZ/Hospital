@@ -13,7 +13,6 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>  </th>
             <th>ID</th>
             <th>Name</th>
             <th>Address 1</th>
@@ -22,25 +21,31 @@
             <th>Sex</th>
             <th>Date of Birth</th>
             <th>Status</th>
+            <th>Action</th>
 
         </tr>
     </thead>
     <tbody>
         @foreach (var patient in Model)
         {
-            <tr>
-                <td>@Html.ActionLink("Edit", "Edit", "Patient", new { id = patient.PatientId }, null)</td>
-                <td>@patient.PatientId</td>
-                <td>@Html.ActionLink(patient.PatientName, "Details", "Patient", new { id = patient.PatientId }, null)</td>
-                <td>@patient.Address1</td>
-                <td>@patient.Address2</td>
-                <td>@patient.PostCode</td>
-                <td>@patient.Sex.Name</td>
-                <td>@patient.DOB</td>
-                <td>@patient.Status.Name</td>
-
-            </tr>
-        }
+            using (Html.BeginForm("Delete", "Patient", new { id = patient.PatientId }))
+            {
+                <tr>
+                    <td>@patient.PatientId</td>
+                    <td>@Html.ActionLink(patient.PatientName, "Details", "Patient", new { id = patient.PatientId }, null)</td>
+                    <td>@patient.Address1</td>
+                    <td>@patient.Address2</td>
+                    <td>@patient.PostCode</td>
+                    <td>@patient.Sex.Name</td>
+                    <td>@patient.DOB.Value.ToShortDateString()</td>
+                    <td>@patient.Status.Name</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Patient", new { id = patient.PatientId }, null) |
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
+                    </td>
+                </tr>
+            }
+         }
     </tbody>
 </table>
 

@@ -13,21 +13,28 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>  </th>
             <th>ID</th>
             <th>Name</th>
             <th>Dosage</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var Drug in Model)
         {
-            <tr>
-                <td>@Html.ActionLink("Edit", "Edit", "Drug", new { id = Drug.DrugId }, null)</td>
-                <td>@Drug.DrugId</td>
-                <td>@Drug.DrugName</td>
-                <td>@Drug.Dosage mg</td>
-            </tr>
+            using (Html.BeginForm("Delete", "Drug", new { id = Drug.DrugId}))
+            {
+                <tr>
+                    <td>@Drug.DrugId</td>
+                    <td>@Drug.DrugName</td>
+                    <td>@Drug.Dosage mg</td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Drug", new { id = Drug.DrugId }, null) |
+                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
+                </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

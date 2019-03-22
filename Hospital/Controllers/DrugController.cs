@@ -68,5 +68,17 @@ namespace Hospital.Controllers
             return View("New", viewresult);
 
         }
+
+        
+        public ActionResult Delete(int id)
+        {
+            var drug = _context.Drugs.SingleOrDefault(c => c.DrugId == id);
+
+            var delete = _context.Drugs.Remove(drug);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Drug");
+        }
     }
 }

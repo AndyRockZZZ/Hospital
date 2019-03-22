@@ -89,5 +89,16 @@ namespace Hospital.Controllers
 
             return View("New", viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var staff = _context.Staffs.SingleOrDefault(s => s.StaffId == id);
+
+            _context.Staffs.Remove(staff);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Staff");
+        }
     }
 }
