@@ -6,14 +6,15 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Hospital.Models;
 
+
 namespace Hospital.Controllers
 {
-    public class BedController : Controller
+    public class RotaController : Controller
     {
-        // GET: Bed
+        // GET: Rota
         private ApplicationDbContext _context;
 
-        public BedController()
+        public RotaController()
         {
             _context = new ApplicationDbContext();
         }
@@ -23,11 +24,11 @@ namespace Hospital.Controllers
             _context.Dispose();
         }
 
-        public ViewResult Index()
+        public ActionResult Index()
         {
-            var beds = _context.Beds.Include(b => b.Ward).ToList();
+            var rota = _context.Rotas.Include(r => r.Staff).Include(r => r.Staff.StaffGrade).Include(r => r.Ward).Include(r => r.WeekShift).ToList();
 
-            return View(beds);
+            return View(rota);
         }
     }
 }

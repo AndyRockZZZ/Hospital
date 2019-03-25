@@ -33,7 +33,7 @@ namespace Hospital.Controllers
 
         public ActionResult Details(int id)
         {
-            var staff = _context.Staffs.Include(s => s.StaffGrade).SingleOrDefault(s => s.StaffId == id);
+            var staff = _context.Rotas.Include(s => s.Staff).Include(s => s.Staff.StaffGrade).Include(r => r.Ward).Include(r => r.WeekShift).ToList().Where(s => s.StaffId == id);
 
             if (staff == null)
                 return HttpNotFound();
@@ -55,11 +55,11 @@ namespace Hospital.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Staff staff)
+        public ActionResult Save(Staff staff)
         {
             if (staff.StaffId == 0)
             {
-                return HttpNotFound();
+               _context.Staffs.Add(staff);
             }
 
             else
@@ -68,6 +68,14 @@ namespace Hospital.Controllers
 
                 StaffInDb.StaffName = staff.StaffName;
                 StaffInDb.StaffGradeId = staff.StaffGradeId;
+
+                if (StaffInDb.PhoneNumber == 0)
+                {
+                    Random random = new Random();
+                    int number = random.Next(1, 99);
+
+                    StaffInDb.PhoneNumber = number;
+                }
             }
 
             _context.SaveChanges();

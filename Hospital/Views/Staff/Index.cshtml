@@ -24,18 +24,18 @@
         @foreach (var staff in Model)
         {
             using (Html.BeginForm("Delete", "Staff", new { id = staff.StaffId }))
-            {
+            { 
                 <tr>
                     <td>@staff.StaffId</td>
                     <td>@Html.ActionLink(staff.StaffName, "Details", "Staff", new { id = staff.StaffId }, null)</td>
                     <td>@staff.PhoneNumber</td>
                     <td>@staff.StaffGrade.Name</td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", "Staff", new { id = staff.StaffId }, null) |
-                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
+                    <td>@Html.ActionLink("Edit", "Edit", "Staff", new { id = staff.StaffId }, null) |
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
                     </td>
                 </tr>
             }
         }
     </tbody>
 </table>
+

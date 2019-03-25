@@ -6,7 +6,7 @@
 
 <h2>New Staff</h2>
 
-@using (Html.BeginForm("Create", "Staff"))
+@using (Html.BeginForm("Save", "Staff"))
 {
     <div class="form-group">
         @Html.LabelFor(s => s.Staff.StaffName)
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Staff.StaffGradeId)
-        @Html.DropDownListFor(s => s.Staff.StaffGradeId, new SelectList(Model.Grades, "Id", "Name"), 
+        @Html.DropDownListFor(s => s.Staff.StaffGradeId, new SelectList(Model.Grades, "Id", "Name"),
        "Select your Grade", new { @class = "form-control"})
     </div>
     @Html.HiddenFor(s => s.Staff.StaffId)

@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<Hospital.Models.Rota>
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Staff's Rota</h2>
+
+<h2>Staff Rota</h2>
 
 <ul>
     <li>Monthly: @DateTime.Now.Month.ToString()</li>
@@ -28,18 +29,18 @@
         {
             using (Html.BeginForm("Delete", "Rota", new { id = rota.StaffId }))
             {
-                <tr>
-                    <td>@rota.Staff.StaffName</td>
-                    <td>@rota.Staff.StaffGrade.Name</td>
-                    <td>@rota.Staff.PhoneNumber</td>
-                    <td>@rota.Ward.WardName</td>
-                    <td>@rota.WeekShift.WeekShiftName</td>
-                    <td>@rota.WeekShift.WeekShiftName</td>
-                    <td>@rota.WeekShift.WeekShiftName</td>
-                    <td>@rota.WeekShift.WeekShiftName</td>
-                </tr>
-            }
+        <tr>
+            <td>@rota.Staff.StaffName</td>
+            <td>@rota.Staff.StaffGrade.Name</td>
+            <td>@rota.Staff.PhoneNumber</td>
+            <td>@rota.Ward.WardName</td>
+            <td>@rota.WeekShift.WeekShiftName</td>
+            <td>@rota.WeekShift.WeekShiftName</td>
+            <td>@rota.WeekShift.WeekShiftName</td>
+            <td>@rota.WeekShift.WeekShiftName</td>
+        </tr>
         }
+    }
     </tbody>
 </table>
 
