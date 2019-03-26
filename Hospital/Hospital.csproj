@@ -178,6 +178,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\PatientOccupancyController.cs" />
+    <Compile Include="Controllers\PrescriptionController.cs" />
     <Compile Include="Controllers\RotaController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\WardController.cs" />
@@ -260,6 +262,22 @@
     <Compile Include="Migrations\201903251734155_AddingRotaTable.Designer.cs">
       <DependentUpon>201903251734155_AddingRotaTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903261335108_ChangingTheBedTable.cs" />
+    <Compile Include="Migrations\201903261335108_ChangingTheBedTable.Designer.cs">
+      <DependentUpon>201903261335108_ChangingTheBedTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903261350081_AddingPatient_Occupancy.cs" />
+    <Compile Include="Migrations\201903261350081_AddingPatient_Occupancy.Designer.cs">
+      <DependentUpon>201903261350081_AddingPatient_Occupancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903261724125_AddPrescription.cs" />
+    <Compile Include="Migrations\201903261724125_AddPrescription.Designer.cs">
+      <DependentUpon>201903261724125_AddPrescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903261751179_ChangeDataTypeinPrescription.cs" />
+    <Compile Include="Migrations\201903261751179_ChangeDataTypeinPrescription.Designer.cs">
+      <DependentUpon>201903261751179_ChangeDataTypeinPrescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bed.cs" />
@@ -267,8 +285,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Patient.cs" />
-    <Compile Include="Models\Patient_Occupancy.cs" />
-    <Compile Include="Models\Perscription.cs" />
+    <Compile Include="Models\PatientOccupancy.cs" />
+    <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Rota.cs" />
     <Compile Include="Models\Sex.cs" />
     <Compile Include="Models\Staff.cs" />
@@ -391,6 +409,8 @@
     <Content Include="Views\Staff\Details.cshtml" />
     <Content Include="Views\Staff\New.cshtml" />
     <Content Include="Views\Rota\Index.cshtml" />
+    <Content Include="Views\PatientOccupancy\Index.cshtml" />
+    <Content Include="Views\Prescription\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -457,6 +477,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903251734155_AddingRotaTable.resx">
       <DependentUpon>201903251734155_AddingRotaTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903261335108_ChangingTheBedTable.resx">
+      <DependentUpon>201903261335108_ChangingTheBedTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903261350081_AddingPatient_Occupancy.resx">
+      <DependentUpon>201903261350081_AddingPatient_Occupancy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903261724125_AddPrescription.resx">
+      <DependentUpon>201903261724125_AddPrescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903261751179_ChangeDataTypeinPrescription.resx">
+      <DependentUpon>201903261751179_ChangeDataTypeinPrescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

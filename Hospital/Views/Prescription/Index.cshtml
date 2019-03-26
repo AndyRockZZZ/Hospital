@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Hospital.Models.Prescription>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Prescriptions</h2>
+
+<table class="table table-bordered table-hover">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Drug</th>
+        <th>Units Per Day</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var prescription in Model)
+    {
+        using (Html.BeginForm("Delete", "PatientOccupancy", new { id = prescription.PrescriptionId }))
+        {
+            <tr>
+                <td>@Html.ActionLink(prescription.Patient.PatientName, "Details", "Patient", new {id = prescription.PatientId}, null)</td>
+                <td>@prescription.Drug.DrugName</td>
+                <td>@prescription.UnitsPerDay</td>
+                <td>@prescription.DrugStartDate.Value.ToLongDateString()</td>
+                <td>@prescription.DrugEndDate.Value.ToLongDateString()</td>
+            </tr>
+        }
+    }
+</tbody>
+</table>
+

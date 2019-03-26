@@ -10,6 +10,9 @@ namespace Hospital.ViewModels
     {
         public IEnumerable<Sex> Sexes { get; set; }
         public IEnumerable<Status> Statuses { get; set; }
+
         public Patient Patient { get; set; }
+        public IEnumerable<PatientOccupancy> PatientOccupancy { get; set; }
+        public IEnumberable<Prescription> Prescription { get; set; }
     }
 }

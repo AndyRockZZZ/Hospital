@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Hospital.Models.PatientOccupancy>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Patient's Occupancy</h2>
+
+<table class="table table-bordered table-hover">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Date Admitted</th>
+        <th>Ward</th>
+        <th>Bed Number</th>
+        <th>Date Discharge</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var patientoccupancy in Model)
+    {
+        using (Html.BeginForm("Delete", "PatientOccupancy", new { id = patientoccupancy.Id}))
+        {
+            <tr>
+                <td>@patientoccupancy.Patient.PatientName</td>
+                <td>@patientoccupancy.DateAdmitted.Value.ToLongDateString()</td>
+                <td>@patientoccupancy.Ward.WardName</td>
+                <td>@patientoccupancy.BedId</td>
+                <td>@patientoccupancy.DischargeDate.Value.ToLongDateString()</td>
+            </tr>
+        }
+    }
+</tbody>
+</table>
+
+

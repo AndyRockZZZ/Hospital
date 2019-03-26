@@ -23,6 +23,8 @@ namespace Hospital.Models
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Sex> Sexes { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<PatientOccupancy> PatientOccupancies { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
 
         public DbSet<Drug> Drugs { get; set; }
 

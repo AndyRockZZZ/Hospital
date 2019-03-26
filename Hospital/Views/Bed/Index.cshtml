@@ -9,8 +9,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th> </th>
-            <th>ID</th>
+            <th>Bed Number</th>
             <th>Name</th>
             <th>Is Available</th>
         </tr>
@@ -19,8 +18,7 @@
         @foreach (var bed in Model)
         {
             <tr>
-                <td>@Html.ActionLink("Edit", "Edit", "Bed", new { id = bed.WardId }, null)</td>
-                <td>@bed.BedId</td>
+                <td>@bed.BedNumber</td>
                 <td>@bed.Ward.WardName</td>
                 <td>@bed.IsAvailable</td>
             </tr>

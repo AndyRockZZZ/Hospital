@@ -34,11 +34,20 @@ namespace Hospital.Controllers
         public ActionResult Details(int id)
         {
             var patient = _context.Patients.Include(p => p.Sex).Include(p => p.Status).SingleOrDefault(p => p.PatientId == id);
+            var occupancy = _context.PatientOccupancies.Include(p => p.Patient).Include(p => p.Ward).Include(p => p.Bed).ToList().Where(p => p.PatientId == id);
+            var prescription = _context.Prescriptions.Include(p => p.Drug).ToList().Where(p => p.PatientId == id);
 
             if (patient == null)
                 return HttpNotFound();
 
-            return View(patient);
+            var viewModel = new PatientFormViewModel
+            {
+                Patient = patient,
+                PatientOccupancy = occupancy,
+                Prescription = prescription,
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult New()

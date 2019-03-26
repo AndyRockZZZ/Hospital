@@ -11,6 +11,8 @@ namespace Hospital.Models
         public int WardId { get; set; }
 
         public int BedId { get; set; }
+
+        public int BedNumber { get; set; }
         public bool IsAvailable { get; set; }
     }
 }

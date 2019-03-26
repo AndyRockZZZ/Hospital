@@ -9,7 +9,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>Bed Number</th>
             <th>Name</th>
             <th>Is Available</th>
         </tr>
@@ -18,7 +18,7 @@
         @foreach (var bed in Model)
         {
             <tr>
-                <td>@bed.BedId</td>
+                <td>@bed.BedNumber</td>
                 <td>@bed.Ward.WardName</td>
                 <td>@bed.IsAvailable</td>
             </tr>

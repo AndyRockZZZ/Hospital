@@ -1,15 +1,39 @@
-﻿@model Hospital.Models.Patient
+﻿@model IEnumerable<Hospital.ViewModels.PatientFormViewModel>
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.PatientName</h2>
-<ul>
-    <li>@Model.Address1</li>
-    <li>@Model.Address2</li>
-    <li>@Model.PostCode</li>
-</ul>
 
-<h3>Working on getting the Patient's Occupancy and Prescription into this page.</h3>
+
+@foreach (var patient in Model)
+{
+    <h2>@patient.Patient.PatientName</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+
+                <th>Date Admitted</th>
+                <th>Ward</th>
+                <th>Bed Number</th>
+                <th>Date Discharge</th>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("Delete", "PatientOccupancy", new { id = patient.Patient.PatientId}))
+                {
+                    <tr>
+                        
+                    </tr>
+                }
+            
+        </tbody>
+    </table>
+
+}
+
+
 
