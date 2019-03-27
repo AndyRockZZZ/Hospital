@@ -1,39 +1,49 @@
-﻿@model IEnumerable<Hospital.ViewModels.PatientFormViewModel>
+﻿@model Hospital.ViewModels.PatientFormViewModel
 @{
-                /**/
-
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    /**/
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>@Model.Patient.PatientName</h2>
 
-
-@foreach (var patient in Model)
-{
-    <h2>@patient.Patient.PatientName</h2>
-
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-
-                <th>Date Admitted</th>
-                <th>Ward</th>
-                <th>Bed Number</th>
-                <th>Date Discharge</th>
-            </tr>
-        </thead>
-        <tbody>
-            @using (Html.BeginForm("Delete", "PatientOccupancy", new { id = patient.Patient.PatientId}))
-                {
-                    <tr>
-                        
-                    </tr>
-                }
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ward</th>
+            <th>Bed Number</th>
+            <th>Date Admitted</th>
+            <th>Date Discharge</th>
+            <th>Drug Number</th>
+            <th>Drug</th>
+            <th>Dosage</th>
+            <th>Units Per Day</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+<tbody>
+    @using (Html.BeginForm("Delete", "PatientOccupancy", new { id = Model.Patient.PatientId}))
+    {
+        <tr>
+            <td>@Model.Patient.PatientId</td>
+            <td>@Model.PatientOccupancy.Ward.WardName</td>
+            <td>@Model.PatientOccupancy.Bed.BedNumber</td>
+            <td>@Model.PatientOccupancy.DateAdmitted.Value.ToLongDateString()</td>
+            <td>@Model.PatientOccupancy.DischargeDate.Value.ToLongDateString()</td>
+            <td>@Model.Prescription.DrugId</td>
+            <td>@Model.Prescription.Drug.DrugName</td>
+            <td>@Model.Prescription.Drug.Dosage</td>
+            <td>@Model.Prescription.UnitsPerDay</td>
+            <td>@Model.Prescription.DrugStartDate.Value.ToLongDateString()</td>
+            <td>@Model.Prescription.DrugEndDate.Value.ToLongDateString()</td>
+        </tr>
+     }
             
-        </tbody>
-    </table>
-
-}
+</tbody>
+</table>
 
 
 

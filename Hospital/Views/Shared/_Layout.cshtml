@@ -21,12 +21,34 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Patients", "Index", "Patient")</li>
-                    <li>@Html.ActionLink("Staff", "Index", "Staff")</li>
-                    <li>@Html.ActionLink("Drugs", "Index", "Drug")</li>
-                    <li>@Html.ActionLink("Wards", "Index", "Ward")</li>
-                    <li>@Html.ActionLink("Beds", "Index", "Bed")</li>
-                    <li>@Html.ActionLink("Staff Rota", "Index", "Rota")</li>
+                    <li>
+                        Patients:
+                        @Html.ActionLink("Add Patient", "New", "Patient")
+                        @Html.ActionLink("View Patients", "Index", "Patient")
+                        @Html.ActionLink("View Patient's Occupancy", "Index", "PatientOccupancy")
+                        @Html.ActionLink("View Patient's Prescription", "Index", "Prescription")
+                    </li>
+
+                    <li>
+                        Staff:
+                        @Html.ActionLink("Add Staff", "New", "Staff")
+                        @Html.ActionLink("View Staff", "Index", "Staff")
+                        @Html.ActionLink("View Staff Rota", "Index", "Rota")
+                    </li>
+
+                    <li>
+                        Drugs:
+                        @Html.ActionLink("Add Drug", "New", "Drug")
+                        @Html.ActionLink("View Drugs", "Index", "Drug")
+                    </li>
+
+                    <li>
+                        Wards:
+                        @Html.ActionLink("Add Ward", "New", "Ward")
+                        @Html.ActionLink("View Wards", "Index", "Ward")
+                        @Html.ActionLink("View Beds", "Index", "Bed")
+                    </li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
