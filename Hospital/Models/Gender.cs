@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Hospital.Models
 {
-    public class Status
+    public class Gender
     {
-       public int Id { get; set; }
-       public string Name { get; set; }
+        public int GenderId { get; set; }
+        public string GenderName { get; set; }
     }
 }

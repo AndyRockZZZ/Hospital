@@ -21,8 +21,7 @@ namespace Hospital.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Patient> Patients { get; set; }
-        public DbSet<Sex> Sexes { get; set; }
-        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Gender> Genders { get; set; }
         public DbSet<PatientOccupancy> PatientOccupancies { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
 

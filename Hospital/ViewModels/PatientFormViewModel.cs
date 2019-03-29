@@ -8,11 +8,16 @@ namespace Hospital.ViewModels
 {
     public class PatientFormViewModel
     {
-        public IEnumerable<Sex> Sexes { get; set; }
-        public IEnumerable<Status> Statuses { get; set; }
+        public IEnumerable<Gender> Genders { get; set; }
+        public IEnumerable<PatientOccupancy> PatientOccupancies { get; set; }
+        public IEnumerable<Prescription> Prescriptions { get; set; }
+        public IEnumerable<Ward> Wards { get; set; }
+        public IEnumerable<Bed> Beds { get; set; }
+        public IEnumerable<Patient> Patients { get; set; }
 
         public Patient Patient { get; set; }
         public PatientOccupancy PatientOccupancy { get; set; }
         public Prescription Prescription { get; set; }
+        public Bed Bed { get; set; }
     }
 }

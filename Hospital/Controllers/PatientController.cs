@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Hospital.Models;
 using Hospital.ViewModels;
+using System.Threading.Tasks;
 
 namespace Hospital.Controllers
 {
@@ -24,16 +25,23 @@ namespace Hospital.Controllers
         {
             _context.Dispose();
         }
-        public ViewResult Index()
-        {
-            var patients = _context.Patients.Include(p => p.Sex).Include(p => p.Status).ToList();
 
-            return View(patients);
+        public ActionResult Index(string searching)
+        {
+            return View(_context.Patients.Include(p => p.Gender)
+                .Where(p => p.PatientSurname.StartsWith(searching) 
+                || searching == null));
+        }
+
+        [HttpPost]
+        public string Search(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
 
         public ActionResult Details(int id)
         {
-            var patient = _context.Patients.Include(p => p.Sex).Include(p => p.Status).SingleOrDefault(p => p.PatientId == id);
+            var patient = _context.Patients.Include(p => p.Gender).SingleOrDefault(p => p.PatientId == id);
             var occupancy = _context.PatientOccupancies.Include(p => p.Patient).Include(p => p.Ward).Include(p => p.Bed).SingleOrDefault(p => p.PatientId == id);
             var prescription = _context.Prescriptions.Include(p => p.Drug).SingleOrDefault(p => p.PatientId == id);
 
@@ -52,14 +60,12 @@ namespace Hospital.Controllers
 
         public ActionResult New()
         {
-            var sex = _context.Sexes.ToList();
-            var status = _context.Statuses.ToList();
+            var gender = _context.Genders.ToList();
 
             var viewModel = new PatientFormViewModel
             {
                 Patient = new Patient(),
-                Sexes = sex,
-                Statuses = status
+                Genders = gender
             };
 
             return View("New", viewModel);
@@ -75,18 +81,18 @@ namespace Hospital.Controllers
             {
                 var patientInDb = _context.Patients.Single(p => p.PatientId == patient.PatientId);
 
-                patientInDb.PatientName = patient.PatientName;
+                patientInDb.PatientFirstName = patient.PatientFirstName;
+                patientInDb.PatientSurname = patient.PatientSurname;
                 patientInDb.Address1 = patient.Address1;
                 patientInDb.Address2 = patient.Address2;
                 patientInDb.PostCode = patient.PostCode;
-                patientInDb.SexId = patient.SexId;
                 patientInDb.DOB = patient.DOB;
-                patientInDb.StatusId = patient.StatusId;
+                patientInDb.GenderId = patient.GenderId;
 
             }
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Patient");
+            return RedirectToAction("New", "PatientOccupancy");
         }
 
         public ActionResult Edit(int id)
@@ -99,8 +105,6 @@ namespace Hospital.Controllers
             var viewModel = new PatientFormViewModel
             {
                 Patient = patient,
-                Sexes = _context.Sexes.ToList(),
-                Statuses = _context.Statuses.ToList()
             };
 
             return View("New", viewModel);

@@ -12,7 +12,8 @@ namespace Hospital.Models
         public int PatientId { get; set; }
 
         [StringLength(70)]
-        public string PatientName { get; set; }
+        public string PatientFirstName { get; set; }
+        public string PatientSurname { get; set; }
 
         [StringLength(100)]
         public string Address1 { get; set; }
@@ -21,15 +22,10 @@ namespace Hospital.Models
         [StringLength(10)]
         public string PostCode { get; set; }
 
-        public Sex Sex { get; set; }
-
-        public int SexId { get; set; }
-
         public DateTime? DOB { get; set; }
 
-        public Status Status { get; set; }
-
-        public int StatusId { get; set; }
+        public Gender Gender { get; set; }
+        public int GenderId { get; set; }
 
     }
 }

@@ -278,20 +278,27 @@
     <Compile Include="Migrations\201903261751179_ChangeDataTypeinPrescription.Designer.cs">
       <DependentUpon>201903261751179_ChangeDataTypeinPrescription.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903291506398_ChangethePatientTable.cs" />
+    <Compile Include="Migrations\201903291506398_ChangethePatientTable.Designer.cs">
+      <DependentUpon>201903291506398_ChangethePatientTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903291522152_addingGender.cs" />
+    <Compile Include="Migrations\201903291522152_addingGender.Designer.cs">
+      <DependentUpon>201903291522152_addingGender.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bed.cs" />
     <Compile Include="Models\Drug.cs" />
+    <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\PatientOccupancy.cs" />
     <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Rota.cs" />
-    <Compile Include="Models\Sex.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\StaffGrade.cs" />
-    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Ward.cs" />
     <Compile Include="Models\WeekShift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -412,6 +419,7 @@
     <Content Include="Views\Rota\Index.cshtml" />
     <Content Include="Views\PatientOccupancy\Index.cshtml" />
     <Content Include="Views\Prescription\Index.cshtml" />
+    <Content Include="Views\PatientOccupancy\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -490,6 +498,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903261751179_ChangeDataTypeinPrescription.resx">
       <DependentUpon>201903261751179_ChangeDataTypeinPrescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291506398_ChangethePatientTable.resx">
+      <DependentUpon>201903291506398_ChangethePatientTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291522152_addingGender.resx">
+      <DependentUpon>201903291522152_addingGender.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

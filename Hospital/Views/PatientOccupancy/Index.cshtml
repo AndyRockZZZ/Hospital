@@ -9,10 +9,13 @@
 <table class="table table-bordered table-hover">
 <thead>
     <tr>
-        <th>Name</th>
-        <th>Date Admitted</th>
+        <th>PatientOccupancy ID</th>
+        <th>Patient ID</th>
+        <th>First Name</th>
+        <th>Surname</th>
         <th>Ward</th>
         <th>Bed Number</th>
+        <th>Date Admitted</th>
         <th>Date Discharge</th>
     </tr>
 </thead>
@@ -21,13 +24,16 @@
     {
         using (Html.BeginForm("Delete", "PatientOccupancy", new { id = patientoccupancy.Id}))
         {
-            <tr>
-                <td>@patientoccupancy.Patient.PatientName</td>
-                <td>@patientoccupancy.DateAdmitted.Value.ToLongDateString()</td>
-                <td>@patientoccupancy.Ward.WardName</td>
-                <td>@patientoccupancy.BedId</td>
-                <td>@patientoccupancy.DischargeDate.Value.ToLongDateString()</td>
-            </tr>
+    <tr>
+        <td>@patientoccupancy.Id</td>
+        <td>@patientoccupancy.PatientId</td>
+        <td>@patientoccupancy.Patient.PatientFirstName</td>
+        <td>@patientoccupancy.Patient.PatientSurname</td>
+        <td>@patientoccupancy.Ward.WardName</td>
+        <td>@patientoccupancy.BedId</td>
+        <td>@patientoccupancy.DateAdmitted.Value.ToLongDateString()</td>
+        <td>@patientoccupancy.DischargeDate.Value.ToLongDateString()</td>
+    </tr>
         }
     }
 </tbody>

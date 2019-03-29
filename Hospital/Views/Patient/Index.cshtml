@@ -10,17 +10,22 @@
     @Html.ActionLink("New Patient", "New", "Patient", null, new { @class = "btn btn-primary" })
 </p>
 
+@using (Html.BeginForm("Index", "Patient", FormMethod.Get))
+{
+    @Html.TextBox("searching")<input type="submit" value="Search">
+}
+<br />
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Surname</th>
             <th>Address 1</th>
             <th>Address 2</th>
             <th>PostCode</th>
-            <th>Sex</th>
             <th>Date of Birth</th>
-            <th>Status</th>
+            <th>Gender</th>
             <th>Action</th>
 
         </tr>
@@ -32,13 +37,13 @@
             {
                 <tr>
                     <td>@patient.PatientId</td>
-                    <td>@Html.ActionLink(patient.PatientName, "Details", "Patient", new { id = patient.PatientId }, null)</td>
+                    <td>@Html.ActionLink(patient.PatientFirstName, "Details", "Patient", new { id = patient.PatientId }, null)</td>
+                    <td>@patient.PatientSurname</td>
                     <td>@patient.Address1</td>
                     <td>@patient.Address2</td>
                     <td>@patient.PostCode</td>
-                    <td>@patient.Sex.Name</td>
                     <td>@patient.DOB.Value.ToShortDateString()</td>
-                    <td>@patient.Status.Name</td>
+                    <td>@patient.Gender.GenderName</td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", "Patient", new { id = patient.PatientId }, null) |
                         <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
