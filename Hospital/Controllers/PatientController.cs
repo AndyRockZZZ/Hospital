@@ -72,8 +72,18 @@ namespace Hospital.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Patient patient)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new PatientFormViewModel
+                {
+                    Patient = patient,
+                    Genders = _context.Genders.ToList()
+                };
+                return View("New", viewModel);
+            }
             if (patient.PatientId == 0)
                 _context.Patients.Add(patient);
 
@@ -92,7 +102,7 @@ namespace Hospital.Controllers
             }
             _context.SaveChanges();
 
-            return RedirectToAction("New", "PatientOccupancy");
+            return RedirectToAction("Index", "Patient");
         }
 
         public ActionResult Edit(int id)
@@ -105,6 +115,7 @@ namespace Hospital.Controllers
             var viewModel = new PatientFormViewModel
             {
                 Patient = patient,
+                Genders = _context.Genders.ToList()
             };
 
             return View("New", viewModel);

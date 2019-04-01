@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Hospital.Models;
+using Hospital.ViewModels;
 
 namespace Hospital.Controllers
 {
@@ -51,8 +52,13 @@ namespace Hospital.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Ward ward)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New", ward);
+            }
             if (ward.WardId == 0)
                 _context.Wards.Add(ward);
 

@@ -55,8 +55,20 @@ namespace Hospital.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Staff staff)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new StaffFormViewModel
+                {
+                    Staff = staff,
+                    Grades = _context.StaffGrades.ToList()
+                };
+
+                return View("New", viewModel);
+            }
+
             if (staff.StaffId == 0)
             {
                _context.Staffs.Add(staff);

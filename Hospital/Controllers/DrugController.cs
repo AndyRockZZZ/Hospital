@@ -38,8 +38,13 @@ namespace Hospital.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Drug drug)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New", drug);
+            }
             if (drug.DrugId == 0)
                 _context.Drugs.Add(drug);
 
@@ -63,13 +68,10 @@ namespace Hospital.Controllers
             if (drug == null)
                 return HttpNotFound();
 
-            var viewresult = drug;
-
-            return View("New", viewresult);
+            return View("New", drug);
 
         }
 
-        
         public ActionResult Delete(int id)
         {
             var drug = _context.Drugs.SingleOrDefault(c => c.DrugId == id);
