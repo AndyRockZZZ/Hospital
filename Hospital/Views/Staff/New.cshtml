@@ -10,9 +10,14 @@
 {
     @Html.ValidationSummary(true, "Please Fix the following errors.")
     <div class="form-group">
-        @Html.LabelFor(s => s.Staff.StaffName)
-        @Html.TextBoxFor(s => s.Staff.StaffName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(s => s.Staff.StaffName)
+        @Html.LabelFor(s => s.Staff.StaffFirstName)
+        @Html.TextBoxFor(s => s.Staff.StaffFirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Staff.StaffFirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Staff.StaffSurname)
+        @Html.TextBoxFor(s => s.Staff.StaffSurname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Staff.StaffSurname)
     </div>
     <div class="form-group">
         @Html.LabelFor(s => s.Staff.StaffGradeId)

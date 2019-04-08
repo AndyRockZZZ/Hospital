@@ -13,12 +13,16 @@ namespace Hospital.Models
 
         [Required]
         [StringLength(100)]
-        [Display(Name = "Name")]
-        public string StaffName { get; set; }
+        [Display(Name = "First Name")]
+        public string StaffFirstName { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Surname")]
+        public string StaffSurname { get; set; }
 
         [Display(Name = "Phone Number")]
         public int PhoneNumber { get; set; }
-
         public StaffGrade StaffGrade { get; set; }
 
         [Display(Name = "Grade")]

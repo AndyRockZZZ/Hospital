@@ -10,6 +10,11 @@
     @Html.ActionLink("New Drug", "New", "Drug", null, new { @class = "btn btn-primary" })
 </p>
 
+@using (Html.BeginForm("Index", "Drug", FormMethod.Get))
+{
+    @Html.TextBox("searching")<input type="submit" value="Search">
+}
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -22,7 +27,7 @@
     <tbody>
         @foreach (var Drug in Model)
         {
-            using (Html.BeginForm("Delete", "Drug", new { id = Drug.DrugId}))
+            using (Html.BeginForm("Delete", "Drug", new { id = Drug.DrugId }))
             {
                 <tr>
                     <td>@Drug.DrugId</td>
@@ -31,8 +36,8 @@
 
                     <td>
                         @Html.ActionLink("Edit", "Edit", "Drug", new { id = Drug.DrugId }, null) |
-                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
-                </td>
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
+                    </td>
                 </tr>
             }
         }

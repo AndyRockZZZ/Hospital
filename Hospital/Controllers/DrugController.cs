@@ -23,11 +23,11 @@ namespace Hospital.Controllers
         {
             _context.Dispose();
         }
-        public ActionResult Index()
+        public ActionResult Index(string searching)
         {
-            var drugs = _context.Drugs.ToList();
-
-            return View(drugs);
+            return View(_context.Drugs
+                .Where(d => d.DrugName.StartsWith(searching)
+                || searching == null));
         }
 
         public ActionResult New()

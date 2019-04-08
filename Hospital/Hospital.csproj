@@ -306,6 +306,14 @@
     <Compile Include="Migrations\201904011646526_AddingMoreAnnotationsToWard.Designer.cs">
       <DependentUpon>201904011646526_AddingMoreAnnotationsToWard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904011800084_ChangingTheStaffTable.cs" />
+    <Compile Include="Migrations\201904011800084_ChangingTheStaffTable.Designer.cs">
+      <DependentUpon>201904011800084_ChangingTheStaffTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904011810277_RemovingAFieldInStaff.cs" />
+    <Compile Include="Migrations\201904011810277_RemovingAFieldInStaff.Designer.cs">
+      <DependentUpon>201904011810277_RemovingAFieldInStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bed.cs" />
@@ -538,6 +546,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904011646526_AddingMoreAnnotationsToWard.resx">
       <DependentUpon>201904011646526_AddingMoreAnnotationsToWard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011800084_ChangingTheStaffTable.resx">
+      <DependentUpon>201904011800084_ChangingTheStaffTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011810277_RemovingAFieldInStaff.resx">
+      <DependentUpon>201904011810277_RemovingAFieldInStaff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -25,11 +25,11 @@ namespace Hospital.Controllers
             _context.Dispose();
         }
 
-        public ViewResult Index()
+        public ActionResult Index(string searching)
         {
-            var wards = _context.Wards.ToList();
-
-            return View(wards);
+            return View(_context.Wards
+                .Where(w => w.WardName.StartsWith(searching)
+                || searching == null));
         }
 
         public ActionResult Details(int id)

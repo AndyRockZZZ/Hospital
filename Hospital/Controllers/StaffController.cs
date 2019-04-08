@@ -24,11 +24,11 @@ namespace Hospital.Controllers
             _context.Dispose();
         }
 
-        public ViewResult Index()
+        public ActionResult Index(string searching)
         {
-            var staffs = _context.Staffs.Include(s => s.StaffGrade).ToList();
-
-            return View(staffs);
+            return View(_context.Staffs.Include(p => p.StaffGrade)
+                .Where(s => s.StaffSurname.StartsWith(searching)
+                || searching == null));
         }
 
         public ActionResult Details(int id)
@@ -78,7 +78,8 @@ namespace Hospital.Controllers
             {
                 var StaffInDb = _context.Staffs.Single(s => s.StaffId == staff.StaffId);
 
-                StaffInDb.StaffName = staff.StaffName;
+                StaffInDb.StaffFirstName = staff.StaffFirstName;
+                StaffInDb.StaffSurname = staff.StaffSurname;
                 StaffInDb.StaffGradeId = staff.StaffGradeId;
 
                 if (StaffInDb.PhoneNumber == 0)
