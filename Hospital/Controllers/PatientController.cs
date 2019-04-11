@@ -52,7 +52,7 @@ namespace Hospital.Controllers
             {
                 Patient = patient,
                 PatientOccupancy = occupancy,
-                Prescription = prescription,
+                Prescription = prescription
             };
 
             return View(viewModel);

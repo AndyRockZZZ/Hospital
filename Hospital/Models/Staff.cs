@@ -23,6 +23,7 @@ namespace Hospital.Models
 
         [Display(Name = "Phone Number")]
         public int PhoneNumber { get; set; }
+
         public StaffGrade StaffGrade { get; set; }
 
         [Display(Name = "Grade")]

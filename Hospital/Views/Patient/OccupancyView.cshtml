@@ -1,0 +1,23 @@
+﻿@model Hospital.Models.PatientOccupancy
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Ward</th>
+            <th>Bed Number</th>
+            <th>Date Admitted</th>
+            <th>Date Discharge</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Ward.WardName</td>
+            <td>@Model.BedId</td>
+            <td>@Model.DateAdmitted.Value.ToShortDateString()</td>
+            <td>@Model.DischargeDate.Value.ToShortDateString()</td>
+        </tr>
+    </tbody>
+</table>
+
+
+

@@ -314,6 +314,14 @@
     <Compile Include="Migrations\201904011810277_RemovingAFieldInStaff.Designer.cs">
       <DependentUpon>201904011810277_RemovingAFieldInStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904081301551_PopulateBedNumbers.cs" />
+    <Compile Include="Migrations\201904081301551_PopulateBedNumbers.Designer.cs">
+      <DependentUpon>201904081301551_PopulateBedNumbers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904081310147_PopulateBedNumbers1.cs" />
+    <Compile Include="Migrations\201904081310147_PopulateBedNumbers1.Designer.cs">
+      <DependentUpon>201904081310147_PopulateBedNumbers1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bed.cs" />
@@ -447,6 +455,9 @@
     <Content Include="Views\Rota\Index.cshtml" />
     <Content Include="Views\PatientOccupancy\Index.cshtml" />
     <Content Include="Views\Prescription\Index.cshtml" />
+    <Content Include="Views\PatientOccupancy\Create.cshtml" />
+    <Content Include="Views\Patient\OccupancyView.cshtml" />
+    <Content Include="Views\Patient\PrescriptionView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -552,6 +563,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904011810277_RemovingAFieldInStaff.resx">
       <DependentUpon>201904011810277_RemovingAFieldInStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904081301551_PopulateBedNumbers.resx">
+      <DependentUpon>201904081301551_PopulateBedNumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904081310147_PopulateBedNumbers1.resx">
+      <DependentUpon>201904081310147_PopulateBedNumbers1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

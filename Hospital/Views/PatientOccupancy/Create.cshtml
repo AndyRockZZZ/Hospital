@@ -1,0 +1,48 @@
+﻿@model Hospital.ViewModels.PatientFormViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Patient Occupancy</h2>
+
+@using (Html.BeginForm("Save", "PatientOccupancy"))
+{
+    @Html.ValidationSummary(true, "Please Fix the following errors.")
+    <div class="form-group">
+        @Html.LabelFor(model => model.PatientOccupancy.PatientId)
+        @Html.DropDownListFor(model => model.PatientOccupancy.PatientId, new SelectList(Model.Patients, "PatientId", "PatientId"), "Select Patient's Name", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PatientOccupancy.PatientId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PatientOccupancy.DateAdmitted)
+        @Html.TextBoxFor(model => model.PatientOccupancy.DateAdmitted, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PatientOccupancy.DateAdmitted)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PatientOccupancy.WardId)
+        @Html.DropDownListFor(model => model.PatientOccupancy.WardId, new SelectList(Model.Wards, "WardId", "WardName"), "Select Ward", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PatientOccupancy.WardId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PatientOccupancy.BedId)
+        @Html.DropDownListFor(model => model.PatientOccupancy.BedId, new SelectList(Model.Beds, "BedId", "BedNumber"), "Select Bed", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PatientOccupancy.BedId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PatientOccupancy.DischargeDate)
+        @Html.TextBoxFor(model => model.PatientOccupancy.DischargeDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PatientOccupancy.DischargeDate)
+    </div>
+
+    <br />
+    @Html.HiddenFor(model => model.PatientOccupancy.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

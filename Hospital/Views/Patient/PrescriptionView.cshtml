@@ -1,0 +1,20 @@
+﻿@model Hospital.Models.Prescription
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Drug</th>
+            <th>Units Per Day</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Drug.DrugName</td>   
+            <td>@Model.UnitsPerDay</td>   
+            <td>@Model.DrugStartDate.Value.ToShortDateString()</td>    
+            <td>@Model.DrugEndDate.Value.ToShortDateString()</td>
+        </tr>
+    </tbody>
+</table>
