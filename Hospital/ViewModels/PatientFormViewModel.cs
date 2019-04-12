@@ -18,6 +18,7 @@ namespace Hospital.ViewModels
         public Patient Patient { get; set; }
         public PatientOccupancy PatientOccupancy { get; set; }
         public Prescription Prescription { get; set; }
+        public Ward Ward { get; set; }
         public Bed Bed { get; set; }
     }
 }

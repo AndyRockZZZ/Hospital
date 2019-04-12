@@ -6,6 +6,7 @@
 }
 
 <h2>@Model.Patient.PatientFirstName @Model.Patient.PatientSurname</h2>
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -39,11 +40,27 @@
 </table>
 
 <br />
-<h2>Patient Occupancy Table</h2>
-@Html.Partial("OccupancyView", Model.PatientOccupancy)
+@if (Model.Patient.PatientId == Model.PatientOccupancy.PatientId)
+{
+    <h2>Patient Occupancy Table</h2>
+    @Html.Partial("OccupancyView", Model.PatientOccupancy)
+}
+else
+{
+    <h2>This Patient doesn't have Occupancy</h2>
+}
+
 
 <br />
-<h2>Patient Prescription Table</h2>
-@Html.Partial("PrescriptionView", Model.Prescription)
+@if (Model.Prescription == null)
+{
+    <h2>This Patient doesn't have Prescription</h2>
+}
+else
+{
+    <h2>Patient Prescription Table</h2>
+    @Html.Partial("PrescriptionView", Model.Prescription)
+}
+
 
 @Html.ActionLink("Back to List", "Index", "Patient")

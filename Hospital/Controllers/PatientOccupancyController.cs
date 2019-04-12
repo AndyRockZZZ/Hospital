@@ -56,31 +56,36 @@ namespace Hospital.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(PatientOccupancy occupancy)
+        public ActionResult Save(PatientOccupancy patientOccupancy)
         {
             if (!ModelState.IsValid)
             {
                 var viewModel = new PatientFormViewModel
                 {
-                    PatientOccupancy = occupancy,
+                    PatientOccupancy = patientOccupancy,
                     Patients = _context.Patients.ToList(),
                     Wards = _context.Wards.ToList(),
                     Beds = _context.Beds.ToList()
                 };
-                return View("Create", viewModel);
+                return View("New", viewModel);
             }
-            if (occupancy.Id == 0)
-                _context.PatientOccupancies.Add(occupancy);
+
+            if (patientOccupancy.Id == 0)
+                _context.PatientOccupancies.Add(patientOccupancy);
 
             else
             {
-                var occupancyInDb = _context.PatientOccupancies.Single(p => p.Id == occupancy.Id);
+                var occupancyInDb = _context.PatientOccupancies.Single(p => p.Id == patientOccupancy.Id);
+                var bedInDb = _context.Beds.Single(p => p.BedId == patientOccupancy.BedId);
 
-                occupancyInDb.PatientId = occupancy.PatientId;
-                occupancyInDb.DateAdmitted = occupancy.DateAdmitted;
-                occupancyInDb.WardId = occupancy.WardId;
-                occupancyInDb.BedId = occupancy.BedId;
-                occupancyInDb.DischargeDate = occupancy.DischargeDate;
+                occupancyInDb.PatientId = patientOccupancy.PatientId;
+                occupancyInDb.DateAdmitted = patientOccupancy.DateAdmitted;
+                occupancyInDb.WardId = patientOccupancy.WardId;
+                occupancyInDb.BedId = patientOccupancy.BedId;
+                occupancyInDb.DischargeDate = patientOccupancy.DischargeDate;
+                bedInDb.IsAvailable = false;
+
+                
             }
             _context.SaveChanges();
 
