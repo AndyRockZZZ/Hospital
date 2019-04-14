@@ -41,7 +41,11 @@
                     <td>@patientoccupancy.BedId</td>
                     <td>@patientoccupancy.DateAdmitted.Value.ToLongDateString()</td>
                     <td>@patientoccupancy.DischargeDate.Value.ToLongDateString()</td>
-                    <td>@Html.ActionLink("Edit", "Edit", "PatientOccupancy", new { id = patientoccupancy.Id}, null)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "PatientOccupancy", new { id = patientoccupancy.Id }, null) |
+                        @Html.ActionLink("Details", "Details", "Patient", new { id = patientoccupancy.PatientId }, null)
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')" />
+                    </td>
                 </tr>
             }
         }
