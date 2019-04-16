@@ -6,32 +6,44 @@
 
 <h2>List of Prescriptions</h2>
 
+<br />
+@using (Html.BeginForm("Index", "Prescription", FormMethod.Get))
+{
+    @Html.TextBox("searching")<input type="submit" value="Search">
+}
+
 <table class="table table-bordered table-hover">
-<thead>
-    <tr>
-        <th>First Name</th>
-        <th>Surname</th>
-        <th>Drug</th>
-        <th>Units Per Day</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-    </tr>
-</thead>
-<tbody>
-    @foreach (var prescription in Model)
-    {
-        using (Html.BeginForm("Delete", "PatientOccupancy", new { id = prescription.PrescriptionId }))
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Drug</th>
+            <th>Units Per Day</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prescription in Model)
         {
-            <tr>
-                <td>@Html.ActionLink(prescription.Patient.PatientFirstName, "Details", "Patient", new {id = prescription.PatientId}, null)</td>
-                <td>@prescription.Patient.PatientSurname</td>
-                <td>@prescription.Drug.DrugName</td>
-                <td>@prescription.UnitsPerDay</td>
-                <td>@prescription.DrugStartDate.Value.ToLongDateString()</td>
-                <td>@prescription.DrugEndDate.Value.ToLongDateString()</td>
-            </tr>
+            using (Html.BeginForm("Delete", "PatientOccupancy", new { id = prescription.PrescriptionId }))
+            {
+                <tr>
+                    <td>@prescription.Patient.PatientFirstName</td>
+                    <td>@prescription.Patient.PatientSurname</td>
+                    <td>@prescription.Drug.DrugName</td>
+                    <td>@prescription.UnitsPerDay</td>
+                    <td>@prescription.DrugStartDate.Value.ToLongDateString()</td>
+                    <td>@prescription.DrugEndDate.Value.ToLongDateString()</td>
+                    <td>
+                        Edit |
+                        @Html.ActionLink("Details", "Details", "Patient", new { id = prescription.PatientId }, null) |
+                        Delete
+                    </td>
+                </tr>
+            }
         }
-    }
-</tbody>
+    </tbody>
 </table>
 

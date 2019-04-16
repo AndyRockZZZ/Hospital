@@ -67,7 +67,7 @@ namespace Hospital.Controllers
                     Wards = _context.Wards.ToList(),
                     Beds = _context.Beds.ToList()
                 };
-                return View("New", viewModel);
+                return View("Create", viewModel);
             }
 
             if (patientOccupancy.Id == 0)
@@ -85,7 +85,23 @@ namespace Hospital.Controllers
                 occupancyInDb.DischargeDate = patientOccupancy.DischargeDate;
                 bedInDb.IsAvailable = false;
 
-                
+                    var prescriptionInDb = _context.Prescriptions.Single(p => p.PatientId == patientOccupancy.PatientId);
+                    var totaldrugs = _context.Drugs.Count();
+
+                    Random random = new Random();
+                    int randomdrug = random.Next(0, totaldrugs-1);
+                    var minimum = 0.1;
+                    var maximum = 10.0;
+                    var randomUnitPerDay = random.NextDouble() * (maximum - minimum) + minimum;
+                    var startdate = random.Next(0, 1);
+                    var enddate = random.Next(-1, 0);
+
+                    prescriptionInDb.PatientId = patientOccupancy.PatientId;
+                    prescriptionInDb.DrugId = randomdrug;
+                    prescriptionInDb.DrugStartDate = patientOccupancy.DateAdmitted.Value.AddDays(startdate);
+                    prescriptionInDb.UnitsPerDay = randomUnitPerDay;
+                    prescriptionInDb.DrugEndDate = patientOccupancy.DischargeDate.Value.AddDays(enddate);
+
             }
             _context.SaveChanges();
 

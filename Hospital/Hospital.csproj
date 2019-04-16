@@ -322,6 +322,10 @@
     <Compile Include="Migrations\201904081310147_PopulateBedNumbers1.Designer.cs">
       <DependentUpon>201904081310147_PopulateBedNumbers1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904151332405_ChangeInPrescription.cs" />
+    <Compile Include="Migrations\201904151332405_ChangeInPrescription.Designer.cs">
+      <DependentUpon>201904151332405_ChangeInPrescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bed.cs" />
@@ -569,6 +573,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904081310147_PopulateBedNumbers1.resx">
       <DependentUpon>201904081310147_PopulateBedNumbers1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904151332405_ChangeInPrescription.resx">
+      <DependentUpon>201904151332405_ChangeInPrescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

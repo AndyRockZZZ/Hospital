@@ -26,7 +26,7 @@ namespace Hospital.Models
         public DateTime? DrugStartDate { get; set; }
 
         [Display(Name = "Units Per Day")]
-        public float UnitsPerDay { get; set; }
+        public double UnitsPerDay { get; set; }
 
         [Display(Name = "End Date")]
         public DateTime? DrugEndDate { get; set; }
