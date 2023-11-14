@@ -125,5 +125,18 @@ namespace Hospital.Controllers
 
             return View("Create", viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var patient = _context.PatientOccupancies.SingleOrDefault(p => p.Id == id);
+            var bed = _context.Beds.SingleOrDefault(p => p.BedId == patient.BedId);
+
+            _context.PatientOccupancies.Remove(patient);
+            bed.IsAvailable = true;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "PatientOccupancy");
+        }
     }
 }
