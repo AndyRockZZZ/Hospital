@@ -124,19 +124,8 @@ namespace Hospital.Controllers
         public ActionResult Delete(int id)
         {
             var patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
-            var occupancy = _context.PatientOccupancies.SingleOrDefault(p => p.PatientId == id);
-            
-            _context.Patients.Remove(patient);
 
-            if (occupancy != null)
-            {
-                _context.PatientOccupancies.Remove(occupancy);
-                var bed = _context.Beds.SingleOrDefault(p => p.BedId == occupancy.BedId);
-                bed.IsAvailable = true;
-            }
-
-            
-            
+            var delete = _context.Patients.Remove(patient);
 
             _context.SaveChanges();
 

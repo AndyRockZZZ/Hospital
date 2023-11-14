@@ -40,7 +40,7 @@
 </table>
 
 <br />
-@if (Model.PatientOccupancy != null)
+@if (Model.Patient.PatientId == Model.PatientOccupancy.PatientId)
 {
     <h2>Patient Occupancy Table</h2>
     @Html.Partial("OccupancyView", Model.PatientOccupancy)
@@ -48,19 +48,18 @@
 else
 {
     <h2>This Patient doesn't have Occupancy</h2>
-    @Html.ActionLink("Make a new occupant", "Create", "PatientOccupancy")
 }
 
 
 <br />
-@if (Model.Prescription != null)
+@if (Model.Prescription == null)
 {
-    <h2>Patient Prescription Table</h2>
-    @Html.Partial("PrescriptionView", Model.Prescription)
+    <h2>This Patient doesn't have Prescription</h2>
 }
 else
 {
-    <h2>This Patient doesn't have Prescription</h2>
+    <h2>Patient Prescription Table</h2>
+    @Html.Partial("PrescriptionView", Model.Prescription)
 }
 
 
